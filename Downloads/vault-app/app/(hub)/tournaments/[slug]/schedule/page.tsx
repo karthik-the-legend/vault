@@ -29,7 +29,7 @@ export default async function TournamentSchedulePage({
               <span
                 className={cn(
                   "size-2.5 shrink-0 rounded-full",
-                  stage.isCurrent ? "bg-blue-600" : "bg-border"
+                  stage.isCurrent ? "bg-accent-blue" : "bg-border"
                 )}
               />
               {i < tournament.scheduleStages.length - 1 && (
@@ -40,7 +40,7 @@ export default async function TournamentSchedulePage({
               <div
                 className={cn(
                   "text-sm font-bold",
-                  stage.isCurrent && "text-blue-600"
+                  stage.isCurrent && "text-accent-blue"
                 )}
               >
                 {stage.title}

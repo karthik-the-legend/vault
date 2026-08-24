@@ -60,12 +60,21 @@ export interface Team {
   name: string;
   status: string;
   league: string;
+  game?: string;
+  role?: string;
+  period?: string;
+  isActive?: boolean;
+  logoLabel?: string;
 }
 
 export interface Achievement {
   id: string;
   title: string;
   description: string;
+  result?: string;
+  game?: string;
+  year?: string;
+  category?: "trophy" | "star" | "medal" | "milestone";
 }
 
 export interface ContentItem {
@@ -73,6 +82,9 @@ export interface ContentItem {
   title: string;
   meta: string;
   platform: string;
+  tag?: string;
+  duration?: string;
+  gradient?: string;
 }
 
 export interface EventItem {
@@ -88,6 +100,8 @@ export interface MatchResult {
   placement: string;
   date: string;
   game: string;
+  team?: string;
+  badge?: string;
 }
 
 export interface ClubPlayer {
@@ -129,6 +143,8 @@ export interface Applicant {
   verifiedRank: string;
   verified: boolean;
   appliedAgo: string;
+  vaultScore?: string;
+  status?: string;
 }
 
 export interface ContentPost {
@@ -295,6 +311,7 @@ export interface HubTournament {
 export interface GameConnection {
   name: string;
   status: "active" | "connected" | "none";
+  subtitle?: string;
 }
 
 export type ContentMediaType = "video" | "clip" | "image";
@@ -316,6 +333,7 @@ export interface CreatorPost {
   likes: string;
   commentCount: number;
   isFeatured?: boolean;
+  profileFeatured?: boolean;
   comments: Comment[];
 }
 

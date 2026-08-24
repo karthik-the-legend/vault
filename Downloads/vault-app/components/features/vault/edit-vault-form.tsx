@@ -1,10 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useState } from "react";
-import { Camera, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { Profile } from "@/types";
-import { ProfileAvatar } from "@/components/shared/profile-avatar";
+import { MobileAppShell } from "@/components/layout/mobile-app-shell";
+import { MSectionLabel, MAvatarCircle, MBtnOutlineDark } from "@/components/shared/mobile-ui";
 
 export function EditVaultForm({
   profile,
@@ -14,11 +16,9 @@ export function EditVaultForm({
   linkedGames: string[];
 }) {
   const router = useRouter();
-  const [name, setName] = useState(profile.displayName);
+  const [name, setName] = useState(profile.displayName.toUpperCase());
   const [bio, setBio] = useState(profile.shortTag);
   const [games, setGames] = useState(linkedGames);
-  const [youtube, setYoutube] = useState(profile.youtubeUrl ?? "");
-  const [twitch, setTwitch] = useState(profile.twitchUrl ?? "");
 
   function removeGame(game: string) {
     setGames((prev) => prev.filter((g) => g !== game));
@@ -29,129 +29,78 @@ export function EditVaultForm({
   }
 
   return (
-    <div>
-      <div className="flex items-start justify-between gap-4">
-        <div className="text-sm text-muted-foreground">
-          <span>VAULT</span> / <span>{profile.username}</span> /{" "}
-          <span className="font-medium text-foreground">Edit</span>
-        </div>
+    <MobileAppShell
+      onBack={true}
+      title="EDIT VAULT"
+      headerRight={
         <button
           type="button"
           onClick={save}
-          className="shrink-0 rounded-md bg-blue-600 px-5 py-2 text-sm font-bold text-white hover:bg-blue-700"
+          className="font-figtree text-[15px] font-bold text-accent-blue"
         >
-          Save Changes
+          Save
         </button>
+      }
+    >
+      <div className="flex w-full flex-col gap-3.5">
+        <MSectionLabel>PROFILE DETAILS</MSectionLabel>
+        <div className="flex items-center gap-3.5">
+          <MAvatarCircle name={profile.displayName} gradient={profile.avatarGradient} size={52} />
+          <button type="button" className="text-[13px] font-bold text-accent-blue">
+            Change Photo
+          </button>
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="edit-mobile-name" className="text-[11px] font-bold text-[#767676]">
+            NAME
+          </label>
+          <input
+            id="edit-mobile-name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="rounded-md border border-[#ECECEC] bg-secondary px-3 py-2.5 text-sm font-semibold text-foreground outline-none focus:border-foreground"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="edit-mobile-bio" className="text-[11px] font-bold text-[#767676]">
+            BIO
+          </label>
+          <input
+            id="edit-mobile-bio"
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
+            className="rounded-md border border-[#ECECEC] bg-secondary px-3 py-2.5 text-sm font-medium text-foreground outline-none focus:border-foreground"
+          />
+        </div>
       </div>
 
-      <h1 className="mt-6 text-2xl font-black tracking-tight">
-        EDIT YOUR VAULT
-      </h1>
-
-      <div className="mt-8 space-y-8">
-        <section>
-          <div className="text-xs font-bold tracking-wide text-muted-foreground">
-            PROFILE DETAILS
-          </div>
-          <div className="mt-3 flex items-center gap-4">
-            <ProfileAvatar
-              name={profile.displayName}
-              gradient={profile.avatarGradient}
-              size="lg"
-            />
-            <button
-              type="button"
-              className="flex items-center gap-1.5 text-sm font-bold text-blue-600"
-            >
-              <Camera className="size-4" />
-              Change Photo
-            </button>
-          </div>
-
-          <div className="mt-5 space-y-4">
-            <div>
-              <label className="text-xs font-semibold tracking-wide">
-                NAME
-              </label>
-              <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="mt-1.5 h-11 w-full rounded-md border border-border px-3.5 text-sm outline-none focus:border-foreground"
-              />
-            </div>
-            <div>
-              <label className="text-xs font-semibold tracking-wide">
-                BIO
-              </label>
-              <input
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-                className="mt-1.5 h-11 w-full rounded-md border border-border px-3.5 text-sm outline-none focus:border-foreground"
-              />
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div className="text-xs font-bold tracking-wide text-muted-foreground">
-            YOUR LINKED GAMES
-          </div>
-          <div className="mt-3 space-y-2">
-            {games.map((game) => (
-              <div
-                key={game}
-                className="flex items-center justify-between rounded-md border border-border px-4 py-3"
-              >
-                <span className="text-sm font-bold">{game}</span>
-                <button
-                  type="button"
-                  aria-label={`Remove ${game}`}
-                  onClick={() => removeGame(game)}
-                  className="text-red-500 hover:text-red-600"
-                >
-                  <Trash2 className="size-4" />
-                </button>
+      <div className="mt-2 flex w-full flex-col gap-2.5">
+        <MSectionLabel>GAMES</MSectionLabel>
+        {games.map((game) => (
+          <div
+            key={game}
+            className="flex w-full items-center justify-between gap-3 rounded-lg border border-[#ECECEC] px-4 py-3"
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="flex size-8 items-center justify-center rounded-md bg-foreground text-[10px] font-extrabold text-white">
+                {game.slice(0, 4).toUpperCase()}
               </div>
-            ))}
+              <span className="text-[13px] font-bold text-foreground">{game}</span>
+            </div>
             <button
               type="button"
-              className="flex h-11 w-full items-center justify-center rounded-md border border-dashed border-border text-sm font-bold text-muted-foreground hover:text-foreground"
+              onClick={() => removeGame(game)}
+              aria-label={`Delete ${game}`}
+              className="text-red-500 transition-opacity hover:opacity-70"
             >
-              + Add Game
+              <Trash2 className="size-4" strokeWidth={2} />
             </button>
           </div>
-        </section>
-
-        <section>
-          <div className="text-xs font-bold tracking-wide text-muted-foreground">
-            SOCIAL &amp; PLATFORMS
-          </div>
-          <div className="mt-3 space-y-4">
-            <div>
-              <label className="text-xs font-semibold tracking-wide">
-                YOUTUBE CHANNEL URL
-              </label>
-              <input
-                value={youtube}
-                onChange={(e) => setYoutube(e.target.value)}
-                placeholder="youtube.com/c/aniket_gaming"
-                className="mt-1.5 h-11 w-full rounded-md border border-border px-3.5 text-sm outline-none focus:border-foreground"
-              />
-            </div>
-            <div>
-              <label className="text-xs font-semibold tracking-wide">
-                TWITCH USERNAME
-              </label>
-              <input
-                value={twitch}
-                onChange={(e) => setTwitch(e.target.value)}
-                placeholder="twitch.tv/aniket_igl"
-                className="mt-1.5 h-11 w-full rounded-md border border-border px-3.5 text-sm outline-none focus:border-foreground"
-              />
-            </div>
-          </div>
-        </section>
+        ))}
+        <Link href={`/vault/${profile.username}/games/add`}>
+          <MBtnOutlineDark className="w-full border-dashed">+ Add Game</MBtnOutlineDark>
+        </Link>
       </div>
-    </div>
+    </MobileAppShell>
   );
 }

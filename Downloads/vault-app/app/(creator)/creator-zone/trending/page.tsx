@@ -16,7 +16,7 @@ export default function TrendingPage() {
               <h2 className="text-lg font-black tracking-tight">
                 {group.heading}
               </h2>
-              <Link href="#" className="text-sm font-bold text-blue-600 hover:underline">
+              <Link href="#" className="text-sm font-bold text-accent-blue hover:underline">
                 View all
               </Link>
             </div>

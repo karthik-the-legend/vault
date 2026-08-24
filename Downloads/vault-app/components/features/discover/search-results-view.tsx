@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { communities, discoverTournaments, profiles } from "@/lib/mock-data";
+import { ACCOUNT_TYPES } from "@/lib/constants";
 import { AccountType } from "@/types";
 import { SearchBar } from "@/components/features/discover/search-bar";
 import { DiscoverResultCard } from "@/components/features/discover/discover-result-card";
@@ -118,8 +119,27 @@ export function SearchResultsView() {
   const filterConfig = FILTER_CONFIG[category];
   const showFilters = filterConfig.fields.length > 0;
 
+  const heroInfo =
+    category === "GAMER" || category === "ESPORTS_CLUB" || category === "ORGANIZER"
+      ? ACCOUNT_TYPES.find((a) => a.type === category)
+      : undefined;
+
   return (
     <div>
+      {heroInfo && (
+        <div className="mb-10 flex flex-col items-center gap-3 py-6 text-center">
+          <span className="text-xs font-extrabold tracking-[0.05em] text-muted-foreground uppercase">
+            {heroInfo.eyebrow}
+          </span>
+          <h1 className="font-heading text-4xl leading-[1.1] font-black tracking-[-0.03em] text-foreground sm:text-5xl">
+            {heroInfo.title.toUpperCase()}.
+          </h1>
+          <p className="max-w-lg text-base text-muted-foreground">
+            {heroInfo.landingDescription}
+          </p>
+        </div>
+      )}
+
       <div className="mx-auto max-w-2xl">
         <SearchBar initialValue={query} />
       </div>
@@ -164,7 +184,7 @@ export function SearchResultsView() {
           <button
             type="button"
             onClick={() => router.push("/discover")}
-            className="mt-3 text-sm font-bold text-blue-600 hover:underline"
+            className="mt-3 text-sm font-bold text-accent-blue hover:underline"
           >
             Try another search
           </button>

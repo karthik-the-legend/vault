@@ -83,7 +83,7 @@ export default async function TournamentOverviewPage({
 
           <Link
             href={`/tournaments/${tournament.slug}/register`}
-            className="flex h-11 w-full items-center justify-center rounded-md bg-blue-600 text-sm font-bold text-white hover:bg-blue-700"
+            className="flex h-11 w-full items-center justify-center rounded-md bg-accent-blue text-sm font-bold text-white hover:bg-accent-blue"
           >
             REGISTER SQUAD
           </Link>

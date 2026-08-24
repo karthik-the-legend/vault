@@ -17,7 +17,7 @@ export function RecentlyViewed({ items }: { items: RecentlyViewedEntry[] }) {
           <button
             type="button"
             onClick={() => setEntries([])}
-            className="text-xs font-bold text-blue-600 hover:underline"
+            className="text-xs font-bold text-accent-blue hover:underline"
           >
             Clear all
           </button>

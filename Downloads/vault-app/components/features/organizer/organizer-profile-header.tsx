@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Profile } from "@/types";
-import { VerifiedDot } from "@/components/shared/verified-badge";
+import { VerifiedPill } from "@/components/shared/verified-badge";
 import { ShareProfileModal } from "@/components/shared/share-profile-modal";
 
 export function OrganizerProfileHeader({
@@ -38,7 +38,7 @@ export function OrganizerProfileHeader({
                 <span className="text-xl font-black tracking-tight">
                   {profile.displayName.toUpperCase()}
                 </span>
-                {profile.verified && <VerifiedDot />}
+                {profile.verified && <VerifiedPill />}
               </div>
               <div className="text-sm text-muted-foreground">
                 {profile.shortTag}

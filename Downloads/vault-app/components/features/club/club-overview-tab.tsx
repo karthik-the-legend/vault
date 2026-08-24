@@ -79,7 +79,7 @@ export function ClubOverviewTab({
         <div className="rounded-lg border border-border bg-card p-4">
           <div className="flex items-center justify-between text-[10px] font-bold tracking-wide text-muted-foreground">
             OPEN RECRUITMENT
-            <span className="rounded-md bg-blue-600 px-2 py-0.5 text-white">
+            <span className="rounded-md bg-accent-blue px-2 py-0.5 text-white">
               APPLY
             </span>
           </div>

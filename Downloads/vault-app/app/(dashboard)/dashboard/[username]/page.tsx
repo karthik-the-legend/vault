@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
-  applicants,
   getProfileByUsername,
   orgStats,
   platformActivity,
+  recentTrialApplications,
   tournaments,
 } from "@/lib/mock-data";
 import { DashboardTopBar } from "@/components/features/dashboard/dashboard-topbar";
@@ -23,68 +23,84 @@ export default async function DashboardOverviewPage({
   const isClub = profile.type === "ESPORTS_CLUB";
 
   if (isClub) {
-    const allApplicants = Object.values(applicants).flat().slice(0, 4);
+    const trials = recentTrialApplications[username] ?? [];
     return (
       <div>
         <DashboardTopBar
           title={`${profile.displayName.toUpperCase()}`}
-          subtitle="Club Management Dashboard"
+          subtitle="Club Management & Roster Operations"
           username={username}
         />
         <div className="mt-6">
           <DashboardStatGrid
             stats={[
-              { label: "ACTIVE TEAMS", value: String(stats?.activeTeams ?? 0) },
-              { label: "ACTIVE PLAYERS", value: String(stats?.activePlayers ?? 0) },
-              { label: "OPEN POSITIONS", value: String(stats?.openPositions ?? 0) },
-              { label: "RECENT APPLICATIONS", value: String(stats?.recentApplications ?? 0) },
+              {
+                label: "ACTIVE ROSTERS",
+                value: String(stats?.activeTeams ?? 0),
+                hint: "BGMI, Valorant, Free Fire",
+              },
+              {
+                label: "TOTAL PLAYERS",
+                value: String(stats?.activePlayers ?? 0),
+                hint: "100% VAULT Verified",
+              },
+              {
+                label: "PENDING APPLICATIONS",
+                value: String(stats?.recentApplications ?? 0),
+                hint: "2 Under Review",
+              },
+              {
+                label: "MONTHLY PROFILE REACH",
+                value: "14.2K",
+                hint: "↑ 24% this month",
+              },
             ]}
           />
         </div>
 
         <div className="mt-8 rounded-lg border border-border bg-card p-5">
           <div className="flex items-center justify-between">
-            <div className="text-sm font-bold">Recent Applications</div>
+            <div className="text-sm font-bold">Recent Trial Applications</div>
             <Link
               href={`/dashboard/${username}/recruitment`}
-              className="text-xs font-bold text-blue-600 hover:underline"
+              className="text-xs font-bold text-accent-blue hover:underline"
             >
-              View All Applications
+              Export All
             </Link>
           </div>
-          <div className="mt-3 space-y-2">
-            {allApplicants.map((a) => (
-              <div
-                key={a.id}
-                className="flex flex-wrap items-center justify-between gap-3 rounded-md bg-secondary/50 p-3"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-bold">
-                    {a.name.charAt(0)}
-                  </span>
-                  <div>
-                    <div className="text-sm font-bold">{a.name}</div>
-                    <div className="text-xs text-muted-foreground">
-                      Applied for {a.appliedFor}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 text-right">
-                  <div>
-                    <div className="text-[10px] font-semibold tracking-wide text-muted-foreground">
-                      VERIFIED RANK
-                    </div>
-                    <div className="text-xs font-bold">{a.verifiedRank}</div>
-                  </div>
-                  <div className="text-xs text-muted-foreground">
-                    {a.appliedAgo}
-                  </div>
-                  <button className="rounded-md bg-foreground px-3.5 py-1.5 text-xs font-bold text-background">
-                    Review
-                  </button>
-                </div>
-              </div>
-            ))}
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full min-w-[560px] text-left text-sm">
+              <thead>
+                <tr className="text-[10px] font-semibold tracking-wide text-muted-foreground">
+                  <th className="pb-2 font-semibold">GAMER</th>
+                  <th className="pb-2 font-semibold">POSITION</th>
+                  <th className="pb-2 font-semibold">IN-GAME RANK</th>
+                  <th className="pb-2 font-semibold">VAULT SCORE</th>
+                  <th className="pb-2 font-semibold">STATUS</th>
+                  <th className="pb-2 font-semibold">ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                {trials.map((a) => (
+                  <tr key={a.id} className="border-t border-border">
+                    <td className="py-3 font-bold">{a.name}</td>
+                    <td className="py-3 text-muted-foreground">{a.appliedFor}</td>
+                    <td className="py-3 text-muted-foreground">{a.verifiedRank}</td>
+                    <td className="py-3 font-bold text-accent-blue">{a.vaultScore}</td>
+                    <td className="py-3">
+                      <span className="rounded-md bg-secondary px-2 py-0.5 text-[10px] font-bold tracking-wide text-secondary-foreground">
+                        {a.status}
+                      </span>
+                    </td>
+                    <td className="py-3">
+                      <button className="rounded-md border border-border px-3 py-1.5 text-xs font-bold">
+                        Review
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -120,7 +136,7 @@ export default async function DashboardOverviewPage({
             <div className="text-sm font-bold">Upcoming Tournaments</div>
             <Link
               href={`/dashboard/${username}/tournaments`}
-              className="text-xs font-bold text-blue-600 hover:underline"
+              className="text-xs font-bold text-accent-blue hover:underline"
             >
               Manage All
             </Link>

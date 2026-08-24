@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { clubTeams, getProfileByUsername } from "@/lib/mock-data";
 import { Breadcrumb } from "@/components/shared/breadcrumb";
 import { VerifiedDot } from "@/components/shared/verified-badge";
+import { AuthenticatedShell } from "@/components/layout/authenticated-shell";
 
 export default async function TeamDetailPage({
   params,
@@ -16,7 +17,7 @@ export default async function TeamDetailPage({
   if (!profile || !team) notFound();
 
   return (
-    <div>
+    <AuthenticatedShell>
       <Breadcrumb
         items={[
           { label: "VAULT", href: "/discover" },
@@ -61,7 +62,7 @@ export default async function TeamDetailPage({
                     <div className="text-xs text-muted-foreground">
                       {player.role}
                     </div>
-                    <div className="mt-1 flex items-center gap-1 text-[10px] font-semibold text-blue-600">
+                    <div className="mt-1 flex items-center gap-1 text-[10px] font-semibold text-accent-blue">
                       VAULT Verified
                       <ExternalLink className="size-2.5" />
                     </div>
@@ -95,6 +96,6 @@ export default async function TeamDetailPage({
           </div>
         </div>
       </div>
-    </div>
+    </AuthenticatedShell>
   );
 }

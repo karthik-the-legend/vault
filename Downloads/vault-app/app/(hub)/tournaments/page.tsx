@@ -26,8 +26,8 @@ export default function TournamentsHubPage() {
   return (
     <div>
       <HubPageHeader
-        title="TOURNAMENTS"
-        subtitle="Connect, compete, and discover elite esports challenges."
+        title="TOURNAMENT DISCOVERY"
+        subtitle="Compete in verified esports events across top titles"
       />
 
       <TournamentSearchBar />
@@ -36,7 +36,7 @@ export default function TournamentsHubPage() {
         <Link href="/tournaments/my" className="text-muted-foreground hover:text-foreground">
           My Tournaments
         </Link>
-        <Link href="/tournaments/create" className="text-blue-600 hover:underline">
+        <Link href="/tournaments/create" className="text-accent-blue hover:underline">
           + Create Tournament
         </Link>
       </div>

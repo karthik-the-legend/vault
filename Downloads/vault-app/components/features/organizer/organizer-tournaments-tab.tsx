@@ -1,6 +1,6 @@
 import { Tournament } from "@/types";
 import { EmptyState } from "@/components/shared/empty-state";
-import { Trophy } from "lucide-react";
+import { Trophy, Gamepad2 } from "lucide-react";
 
 const STATUS_LABEL: Record<Tournament["status"], string> = {
   REGISTRATION_OPEN: "REGISTRATION OPEN",
@@ -11,7 +11,7 @@ const STATUS_LABEL: Record<Tournament["status"], string> = {
 
 const STATUS_CLASS: Record<Tournament["status"], string> = {
   REGISTRATION_OPEN: "bg-orange-100 text-orange-700",
-  UPCOMING: "bg-blue-100 text-blue-700",
+  UPCOMING: "bg-accent-blue-tint text-accent-blue",
   COMPLETED: "bg-secondary text-secondary-foreground",
   DRAFT: "bg-amber-100 text-amber-700",
 };
@@ -39,12 +39,12 @@ export function OrganizerTournamentsTab({
         {tournaments.map((t) => (
           <div key={t.id} className="overflow-hidden rounded-lg border border-border bg-card">
             <div
-              className="flex aspect-video items-center justify-center text-3xl text-white/20"
+              className="flex aspect-video items-center justify-center text-white/20"
               style={{
                 background: "radial-gradient(circle at 70% 30%, #1e293b, #020617 70%)",
               }}
             >
-              🎮
+              <Gamepad2 className="size-8" strokeWidth={1.5} />
             </div>
             <div className="p-4">
               <div className="flex items-center justify-between text-[10px] font-bold tracking-wide">

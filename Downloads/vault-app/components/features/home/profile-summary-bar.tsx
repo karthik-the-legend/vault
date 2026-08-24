@@ -14,7 +14,7 @@ export function ProfileSummaryBar({ profile }: { profile: Profile }) {
           <span className="text-base font-extrabold tracking-wide">
             {profile.displayName.toUpperCase()}
           </span>
-          <span className="rounded-full border border-blue-600 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-blue-600">
+          <span className="rounded-full border border-accent-blue px-2 py-0.5 text-[10px] font-semibold tracking-wide text-accent-blue">
             VERIFIED GAMER
           </span>
         </div>

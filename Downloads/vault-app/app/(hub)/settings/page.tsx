@@ -64,14 +64,14 @@ export default function HubSettingsPage() {
         </div>
         <button className="flex w-full items-center justify-between gap-3 p-4 text-left hover:bg-secondary/40">
           <span className="text-sm font-medium">Who can follow your profile</span>
-          <span className="flex items-center gap-2 text-xs font-semibold text-blue-600">
+          <span className="flex items-center gap-2 text-xs font-semibold text-accent-blue">
             Everyone
             <ChevronRight className="size-4" />
           </span>
         </button>
         <button className="flex w-full items-center justify-between gap-3 p-4 text-left hover:bg-secondary/40">
           <span className="text-sm font-medium">Who can send connection requests</span>
-          <span className="flex items-center gap-2 text-xs font-semibold text-blue-600">
+          <span className="flex items-center gap-2 text-xs font-semibold text-accent-blue">
             Everyone
             <ChevronRight className="size-4" />
           </span>
@@ -84,7 +84,7 @@ export default function HubSettingsPage() {
       <div className="mt-3 divide-y divide-border rounded-lg border border-border bg-card">
         <button className="flex w-full items-center justify-between gap-3 p-4 text-left hover:bg-secondary/40">
           <span className="text-sm font-medium">Esports Region Focus</span>
-          <span className="flex items-center gap-2 text-xs font-semibold text-blue-600">
+          <span className="flex items-center gap-2 text-xs font-semibold text-accent-blue">
             India (IST)
             <ChevronRight className="size-4" />
           </span>

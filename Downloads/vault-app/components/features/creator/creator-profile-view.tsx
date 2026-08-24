@@ -24,7 +24,7 @@ export function CreatorProfileView({
   const [tab, setTab] = useState<Tab>("Featured");
 
   const filtered = posts.filter((p) => {
-    if (tab === "Featured") return p.isFeatured;
+    if (tab === "Featured") return p.profileFeatured;
     if (tab === "Videos") return p.mediaType === "video";
     if (tab === "Clips") return p.mediaType === "clip";
     return p.mediaType === "image";

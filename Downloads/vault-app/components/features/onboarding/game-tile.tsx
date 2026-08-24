@@ -35,7 +35,7 @@ export function GameTile({
         </span>
       </span>
       {selected ? (
-        <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-blue-600">
+        <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-accent-blue">
           <Check className="size-2.5 text-white" strokeWidth={3.5} />
         </span>
       ) : (

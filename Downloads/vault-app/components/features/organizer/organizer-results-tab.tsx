@@ -1,6 +1,7 @@
 import { Award, BarChart3 } from "lucide-react";
 import { TournamentResult } from "@/types";
 import { EmptyState } from "@/components/shared/empty-state";
+import { VerifiedPill } from "@/components/shared/verified-badge";
 
 export function OrganizerResultsTab({
   results,
@@ -42,11 +43,7 @@ export function OrganizerResultsTab({
                 <span className="text-muted-foreground">
                   {result.participants.toLocaleString()} Registered Participants
                 </span>
-                {result.verified && (
-                  <span className="flex items-center gap-1 rounded-full border border-blue-600 px-2 py-0.5 font-semibold text-blue-600">
-                    ✓ VERIFIED RESULTS
-                  </span>
-                )}
+                {result.verified && <VerifiedPill label="VERIFIED RESULTS" />}
               </div>
             </div>
             <div className="mt-3 grid grid-cols-2 gap-3">

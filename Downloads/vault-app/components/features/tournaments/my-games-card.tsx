@@ -11,7 +11,7 @@ export function MyGamesCard({ games }: { games: GameConnection[] }) {
   return (
     <div>
       <div className="text-xs font-bold tracking-wide text-muted-foreground">
-        MY GAMES
+        MY ACTIVE GAMES
       </div>
       <div className="mt-3 space-y-2">
         {games.map((game) => {
@@ -33,10 +33,10 @@ export function MyGamesCard({ games }: { games: GameConnection[] }) {
                   className={
                     game.status === "none"
                       ? "text-xs text-muted-foreground"
-                      : "text-xs font-semibold text-blue-600"
+                      : "text-xs font-semibold text-accent-blue"
                   }
                 >
-                  {STATUS_LABEL[game.status]}
+                  {game.subtitle ?? STATUS_LABEL[game.status]}
                 </div>
               </div>
             </div>

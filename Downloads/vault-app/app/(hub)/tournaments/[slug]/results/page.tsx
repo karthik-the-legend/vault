@@ -31,12 +31,12 @@ export default async function TournamentResultsPage({
                 key={entry.place}
                 className={cn(
                   "rounded-lg border p-4",
-                  entry.highlighted ? "border-2 border-blue-600" : "border-border"
+                  entry.highlighted ? "border-2 border-accent-blue" : "border-border"
                 )}
               >
                 <div className="flex items-center gap-1.5 text-[10px] font-semibold tracking-wide text-muted-foreground">
-                  {entry.highlighted && <Trophy className="size-3 text-blue-600" />}
-                  <span className={entry.highlighted ? "text-blue-600" : ""}>
+                  {entry.highlighted && <Trophy className="size-3 text-accent-blue" />}
+                  <span className={entry.highlighted ? "text-accent-blue" : ""}>
                     {entry.placeLabel.toUpperCase()}
                   </span>
                 </div>
@@ -59,7 +59,7 @@ export default async function TournamentResultsPage({
                   </span>
                   <div>
                     <div className="flex flex-wrap items-center gap-1.5">
-                      <span className="rounded-md bg-blue-600 px-2 py-0.5 text-[10px] font-bold text-white">
+                      <span className="rounded-md bg-accent-blue px-2 py-0.5 text-[10px] font-bold text-white">
                         TOURNAMENT MVP
                       </span>
                       <VerifiedPill />

@@ -45,7 +45,7 @@ export function HubSidebar() {
                 <Icon className="size-4" />
                 {item.label}
               </span>
-              {item.dot && <span className="size-1.5 rounded-full bg-blue-600" />}
+              {item.dot && <span className="size-1.5 rounded-full bg-accent-blue" />}
             </Link>
           );
         })}

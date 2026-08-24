@@ -88,7 +88,7 @@ export function DashboardSidebar({
                     "flex size-4 items-center justify-center rounded-full text-[10px] font-bold",
                     active
                       ? "bg-background text-foreground"
-                      : "bg-blue-600 text-white"
+                      : "bg-accent-blue text-white"
                   )}
                 >
                   {item.badge}

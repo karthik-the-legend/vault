@@ -102,16 +102,16 @@ export function TournamentRegistration({ tournament }: { tournament: HubTourname
                 onClick={() => setFormat("solo")}
                 className={cn(
                   "flex items-center gap-3 rounded-md border p-3 text-left",
-                  format === "solo" ? "border-2 border-blue-600 bg-blue-50" : "border-border"
+                  format === "solo" ? "border-2 border-accent-blue bg-accent-blue-tint" : "border-border"
                 )}
               >
                 <span
                   className={cn(
                     "flex size-4 shrink-0 items-center justify-center rounded-full border-2",
-                    format === "solo" ? "border-blue-600" : "border-border"
+                    format === "solo" ? "border-accent-blue" : "border-border"
                   )}
                 >
-                  {format === "solo" && <span className="size-2 rounded-full bg-blue-600" />}
+                  {format === "solo" && <span className="size-2 rounded-full bg-accent-blue" />}
                 </span>
                 <span>
                   <span className="block text-sm font-bold">SOLO ENTRY</span>
@@ -123,16 +123,16 @@ export function TournamentRegistration({ tournament }: { tournament: HubTourname
                 onClick={() => setFormat("team")}
                 className={cn(
                   "flex items-center gap-3 rounded-md border p-3 text-left",
-                  format === "team" ? "border-2 border-blue-600 bg-blue-50" : "border-border"
+                  format === "team" ? "border-2 border-accent-blue bg-accent-blue-tint" : "border-border"
                 )}
               >
                 <span
                   className={cn(
                     "flex size-4 shrink-0 items-center justify-center rounded-full border-2",
-                    format === "team" ? "border-blue-600" : "border-border"
+                    format === "team" ? "border-accent-blue" : "border-border"
                   )}
                 >
-                  {format === "team" && <span className="size-2 rounded-full bg-blue-600" />}
+                  {format === "team" && <span className="size-2 rounded-full bg-accent-blue" />}
                 </span>
                 <span>
                   <span className="block text-sm font-bold">TEAM SQUAD</span>
@@ -194,11 +194,11 @@ export function TournamentRegistration({ tournament }: { tournament: HubTourname
           <div className="mt-4 space-y-3 border-t border-border pt-4 text-sm">
             <div className="flex justify-between">
               <span className="text-muted-foreground">Default Game</span>
-              <span className="font-bold">BGMI (Free Fire Max Mode)</span>
+              <span className="font-bold">{tournament.game}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">League Rank</span>
-              <span className="font-bold text-blue-600">CONQUEROR</span>
+              <span className="font-bold text-accent-blue">CONQUEROR</span>
             </div>
             <div className="flex justify-between">
               <span className="text-muted-foreground">Squad Role</span>

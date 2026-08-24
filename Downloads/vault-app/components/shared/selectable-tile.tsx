@@ -29,7 +29,7 @@ export function SelectableTile({
       )}
     >
       {eyebrow && (
-        <span className="text-[11px] font-semibold tracking-wide text-blue-600">
+        <span className="text-[11px] font-semibold tracking-wide text-accent-blue">
           {eyebrow}
         </span>
       )}
@@ -38,7 +38,7 @@ export function SelectableTile({
         {description}
       </span>
       {selected && (
-        <span className="mt-4 flex items-center gap-1 text-xs font-semibold text-blue-600">
+        <span className="mt-4 flex items-center gap-1 text-xs font-semibold text-accent-blue">
           <Check className="size-3.5" strokeWidth={3} />
           SELECTED
         </span>

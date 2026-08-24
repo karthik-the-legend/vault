@@ -32,7 +32,7 @@ export function MyTournamentsView() {
             className={cn(
               "border-b-2 pb-2 text-sm font-bold tracking-wide transition-colors",
               tab === t
-                ? "border-blue-600 text-foreground"
+                ? "border-accent-blue text-foreground"
                 : "border-transparent text-muted-foreground hover:text-foreground"
             )}
           >
@@ -56,7 +56,7 @@ export function MyTournamentsView() {
                       <div className="text-xs font-semibold tracking-wide text-muted-foreground">
                         {t?.game}
                       </div>
-                      <span className="rounded-md bg-blue-50 px-2 py-0.5 text-[11px] font-bold text-blue-700">
+                      <span className="rounded-md bg-accent-blue-tint px-2 py-0.5 text-[11px] font-bold text-accent-blue">
                         {reg.status}
                       </span>
                     </div>

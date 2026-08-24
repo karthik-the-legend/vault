@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { getProfileByUsername, leagues, tournaments } from "@/lib/mock-data";
 import { Breadcrumb } from "@/components/shared/breadcrumb";
+import { AuthenticatedShell } from "@/components/layout/authenticated-shell";
 
 const STATUS_LABEL: Record<string, string> = {
   REGISTRATION_OPEN: "REGISTRATION OPEN",
@@ -37,7 +38,7 @@ export default async function LeagueDetailPage({
   ];
 
   return (
-    <div>
+    <AuthenticatedShell>
       <Breadcrumb
         items={[
           { label: profile.displayName, href: `/vault/${username}` },
@@ -132,7 +133,7 @@ export default async function LeagueDetailPage({
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Required Level</span>
-                <span className="font-bold text-blue-600">
+                <span className="font-bold text-accent-blue">
                   {league.requiredLevel}
                 </span>
               </div>
@@ -140,6 +141,6 @@ export default async function LeagueDetailPage({
           </div>
         </div>
       </div>
-    </div>
+    </AuthenticatedShell>
   );
 }

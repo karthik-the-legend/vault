@@ -3,6 +3,7 @@ import { League, TournamentResult } from "@/types";
 import { EmptyState } from "@/components/shared/empty-state";
 import { Trophy2Placeholder } from "@/components/features/organizer/trophy-placeholder";
 import { Trophy } from "lucide-react";
+import { VerifiedPill } from "@/components/shared/verified-badge";
 
 export function OrganizerOverviewTab({
   username,
@@ -37,7 +38,7 @@ export function OrganizerOverviewTab({
               {featuredLeague.badges.map((b) => (
                 <span
                   key={b}
-                  className="rounded-md bg-blue-600 px-2 py-0.5 text-[10px] font-bold tracking-wide text-white"
+                  className="rounded-md bg-accent-blue px-2 py-0.5 text-[10px] font-bold tracking-wide text-white"
                 >
                   {b}
                 </span>
@@ -91,9 +92,7 @@ export function OrganizerOverviewTab({
             <div className="mt-3 rounded-lg border border-border bg-card p-4">
               <div className="flex items-center justify-between text-[10px] font-semibold tracking-wide text-muted-foreground">
                 COMPLETED SERIES
-                {recentResult.verified && (
-                  <span className="text-emerald-600">✓ VERIFIED</span>
-                )}
+                {recentResult.verified && <VerifiedPill />}
               </div>
               <div className="mt-1 text-sm font-bold">
                 {recentResult.tournamentName}

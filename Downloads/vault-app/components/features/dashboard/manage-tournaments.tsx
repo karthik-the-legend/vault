@@ -12,7 +12,7 @@ const STATUS_LABEL: Record<Tournament["status"], string> = {
 
 const STATUS_CLASS: Record<Tournament["status"], string> = {
   REGISTRATION_OPEN: "text-emerald-600",
-  UPCOMING: "text-blue-600",
+  UPCOMING: "text-accent-blue",
   COMPLETED: "text-muted-foreground",
   DRAFT: "text-amber-600",
 };

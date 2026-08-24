@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Profile } from "@/types";
 import { ProfileAvatar } from "@/components/shared/profile-avatar";
-import { VerifiedDot } from "@/components/shared/verified-badge";
+import { VerifiedDot, VerifiedPill, UnverifiedPill } from "@/components/shared/verified-badge";
 
 export function DiscoverResultCard({ profile }: { profile: Profile }) {
   const [following, setFollowing] = useState(false);
@@ -28,10 +28,10 @@ export function DiscoverResultCard({ profile }: { profile: Profile }) {
             </div>
           </div>
         </div>
-        {profile.verified && (
-          <span className="shrink-0 rounded-md bg-secondary px-2 py-1 text-[10px] font-semibold tracking-wide text-secondary-foreground">
-            VERIFIED {profile.typeLabel}
-          </span>
+        {profile.verified ? (
+          <VerifiedPill label={`VERIFIED ${profile.typeLabel}`} className="shrink-0" />
+        ) : (
+          <UnverifiedPill label={`UNVERIFIED ${profile.typeLabel}`} className="shrink-0" />
         )}
       </div>
 

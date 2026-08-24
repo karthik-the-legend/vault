@@ -91,7 +91,7 @@ export function TournamentDetailShell({
             className={cn(
               "shrink-0 border-b-2 pb-2 text-sm font-bold tracking-wide whitespace-nowrap transition-colors",
               activeTab === tab.label
-                ? "border-blue-600 text-foreground"
+                ? "border-accent-blue text-foreground"
                 : "border-transparent text-muted-foreground hover:text-foreground"
             )}
           >

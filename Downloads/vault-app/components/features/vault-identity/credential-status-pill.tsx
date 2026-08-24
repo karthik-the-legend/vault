@@ -10,7 +10,7 @@ const LABEL: Record<CredentialStatus, string> = {
 };
 
 const CLASS: Record<CredentialStatus, string> = {
-  ACTIVE: "bg-blue-100 text-blue-700",
+  ACTIVE: "bg-accent-blue-tint text-accent-blue",
   PENDING: "bg-amber-100 text-amber-700",
   NOT_ACTIVE: "bg-secondary text-secondary-foreground",
   FAILED: "bg-red-100 text-red-700",

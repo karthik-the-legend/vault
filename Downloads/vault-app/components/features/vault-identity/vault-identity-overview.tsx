@@ -38,7 +38,7 @@ export function VaultIdentityOverview() {
       />
 
       <div className="rounded-lg bg-secondary/60 p-6">
-        <span className="rounded-md bg-blue-600 px-2.5 py-1 text-[10px] font-bold tracking-wide text-white">
+        <span className="rounded-md bg-accent-blue px-2.5 py-1 text-[10px] font-bold tracking-wide text-white">
           CREDIBILITY LAYER
         </span>
         <h1 className="mt-3 text-2xl font-black tracking-tight sm:text-3xl">
@@ -62,7 +62,7 @@ export function VaultIdentityOverview() {
               <ul className="mt-4 space-y-2">
                 {type.items.map((item) => (
                   <li key={item} className="flex items-center gap-2 text-sm">
-                    <Check className="size-3.5 shrink-0 text-blue-600" strokeWidth={3} />
+                    <Check className="size-3.5 shrink-0 text-accent-blue" strokeWidth={3} />
                     {item}
                   </li>
                 ))}

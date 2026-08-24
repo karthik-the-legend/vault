@@ -56,9 +56,9 @@ export function ClubRecruitmentTab({
             </div>
             <button
               type="button"
-              className="mt-3 h-9 w-full rounded-md bg-secondary text-xs font-bold text-secondary-foreground"
+              className="mt-3 h-9 w-full rounded-md bg-foreground text-xs font-bold text-background"
             >
-              View Opportunity
+              Apply via VAULT
             </button>
           </div>
         ))}

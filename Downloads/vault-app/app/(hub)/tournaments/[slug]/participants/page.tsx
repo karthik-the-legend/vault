@@ -44,7 +44,7 @@ export default async function TournamentParticipantsPage({
               <span
                 className={cn(
                   "flex items-center gap-1 text-xs font-semibold",
-                  squad.verified ? "text-blue-600" : "text-muted-foreground"
+                  squad.verified ? "text-accent-blue" : "text-muted-foreground"
                 )}
               >
                 <span className="size-1.5 rounded-full bg-current" />

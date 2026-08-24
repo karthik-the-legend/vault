@@ -106,7 +106,7 @@ export function RecruitmentManager({
                     </div>
                     <div className="text-xs text-muted-foreground">
                       {a.appliedFor} ·{" "}
-                      <span className="font-semibold text-blue-600">
+                      <span className="font-semibold text-accent-blue">
                         {a.verifiedRank}
                       </span>
                     </div>
@@ -116,7 +116,7 @@ export function RecruitmentManager({
                   <button className="rounded-md border border-border px-3 py-1.5 text-xs font-bold">
                     View VAULT
                   </button>
-                  <button className="rounded-md border border-border px-3 py-1.5 text-xs font-bold text-blue-600">
+                  <button className="rounded-md border border-border px-3 py-1.5 text-xs font-bold text-accent-blue">
                     Shortlist
                   </button>
                   <button className="rounded-md bg-foreground px-3 py-1.5 text-xs font-bold text-background">

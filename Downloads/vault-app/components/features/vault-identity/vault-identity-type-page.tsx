@@ -34,7 +34,7 @@ export function VaultIdentityTypePage({
 
       <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
         <div>
-          <span className="rounded-md bg-blue-600 px-2.5 py-1 text-[10px] font-bold tracking-wide text-white">
+          <span className="rounded-md bg-accent-blue px-2.5 py-1 text-[10px] font-bold tracking-wide text-white">
             {badge}
           </span>
           <h1 className="mt-3 text-2xl font-black tracking-tight sm:text-3xl">
@@ -57,7 +57,7 @@ export function VaultIdentityTypePage({
           <div className="mt-3 space-y-3">
             {checklist.map((item) => (
               <div key={item} className="flex items-center gap-2">
-                <span className="flex size-5 shrink-0 items-center justify-center rounded-sm bg-blue-600">
+                <span className="flex size-5 shrink-0 items-center justify-center rounded-sm bg-accent-blue">
                   <Check className="size-3 text-white" strokeWidth={3} />
                 </span>
                 <span className="text-sm">{item}</span>

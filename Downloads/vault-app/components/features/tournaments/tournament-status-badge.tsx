@@ -9,7 +9,7 @@ const LABEL: Record<HubTournamentStatus, string> = {
 };
 
 const CLASS: Record<HubTournamentStatus, string> = {
-  REGISTRATION_OPEN: "text-blue-600",
+  REGISTRATION_OPEN: "text-accent-blue",
   REGISTRATION_CLOSED: "text-muted-foreground",
   ONGOING: "text-emerald-600",
   COMPLETED: "text-muted-foreground",

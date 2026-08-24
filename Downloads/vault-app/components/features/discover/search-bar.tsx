@@ -142,7 +142,7 @@ export function SearchBar({
               <button
                 type="button"
                 onClick={goToResults}
-                className="mt-2 flex items-center gap-1 border-t border-border px-2 pt-2 text-sm font-bold text-blue-600 hover:underline"
+                className="mt-2 flex items-center gap-1 border-t border-border px-2 pt-2 text-sm font-bold text-accent-blue hover:underline"
               >
                 View all results →
               </button>

@@ -2,79 +2,98 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Profile } from "@/types";
 import { ProfileAvatar } from "@/components/shared/profile-avatar";
-import { VerifiedDot, VerifiedPill } from "@/components/shared/verified-badge";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { VerifiedDot, VerifiedPill, UnverifiedPill } from "@/components/shared/verified-badge";
 
-export function ProfilePreviewCard({ profile }: { profile: Profile }) {
+export function ProfilePreviewCard({
+  profile,
+  attributes,
+}: {
+  profile: Profile;
+  attributes?: { label: string; value: string }[];
+}) {
   return (
-    <div className="flex flex-col rounded-lg border border-border bg-card p-5">
-      <div className="flex items-start justify-between gap-3">
+    <article className="flex w-full flex-col items-start gap-5 rounded-lg border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1 hover:border-[#D1D5DB] hover:shadow-[var(--shadow-card-hover)]">
+      <div className="flex w-full items-center justify-between">
         <div className="flex items-center gap-3">
           <ProfileAvatar
             name={profile.displayName}
             gradient={profile.avatarGradient}
             size="md"
           />
-          <div>
+          <div className="flex flex-col items-start gap-0.5">
             <div className="flex items-center gap-1.5">
-              <span className="text-sm font-extrabold tracking-wide">
+              <span className="text-base font-bold text-foreground">
                 {profile.displayName.toUpperCase()}
               </span>
               {profile.verified && <VerifiedDot />}
             </div>
-            <div className="text-xs text-muted-foreground">
+            <span className="text-[13px] text-muted-foreground">
               @{profile.username}
-            </div>
+            </span>
           </div>
         </div>
-        <Badge
-          variant="outline"
-          className="shrink-0 rounded-md px-2 py-1 text-[10px] font-semibold tracking-wide text-muted-foreground"
-        >
+        <span className="shrink-0 rounded-sm border border-border bg-secondary px-2 py-1 text-[11px] font-semibold tracking-[0.02em] text-muted-foreground uppercase">
           {profile.typeLabel}
-        </Badge>
+        </span>
       </div>
 
-      {profile.verified && <VerifiedPill className="mt-3 w-fit" />}
+      {profile.verified ? <VerifiedPill /> : <UnverifiedPill />}
 
-      <p className="mt-3 text-sm text-muted-foreground">{profile.shortTag}</p>
+      <p className="text-sm text-muted-foreground">{profile.shortTag}</p>
 
-      <Separator className="my-4" />
+      <hr className="w-full border-border" />
 
-      <div className="grid grid-cols-3 gap-2">
+      {attributes && (
+        <>
+          <div className="flex w-full flex-col gap-2.5">
+            {attributes.map((attr) => (
+              <div key={attr.label} className="flex w-full items-center justify-between">
+                <span className="text-[11px] font-semibold tracking-[0.04em] text-[color:var(--text-muted)] uppercase">
+                  {attr.label}
+                </span>
+                <span className="text-[13px] font-semibold text-foreground">
+                  {attr.value}
+                </span>
+              </div>
+            ))}
+          </div>
+          <hr className="w-full border-border" />
+        </>
+      )}
+
+      <div className="flex w-full items-start justify-between">
         {profile.stats.map((stat) => (
-          <div key={stat.label}>
-            <div className="text-lg font-extrabold sm:text-xl">
-              {stat.value}
-            </div>
-            <div className="text-[10px] font-medium tracking-wide text-muted-foreground">
+          <div key={stat.label} className="flex flex-1 flex-col items-start gap-1">
+            <span className="text-lg font-bold text-foreground">{stat.value}</span>
+            <span className="text-[11px] font-semibold tracking-[0.02em] text-muted-foreground uppercase">
               {stat.label}
-            </div>
+            </span>
           </div>
         ))}
       </div>
 
-      <Separator className="my-4" />
+      <hr className="w-full border-border" />
 
-      <div className="flex flex-wrap gap-1.5">
+      <div className="flex w-full flex-wrap items-start gap-2">
         {profile.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-md bg-secondary px-2 py-1 text-[11px] font-medium text-secondary-foreground"
+            className="inline-flex items-center rounded-sm bg-secondary px-2 py-1 text-[11px] font-medium tracking-[0.02em] text-muted-foreground transition-colors hover:bg-[#ECEFF1] hover:text-foreground"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      <Link
-        href={`/vault/${profile.username}`}
-        className="mt-4 flex items-center gap-1 text-sm font-bold hover:underline"
-      >
-        VIEW VAULT
-        <ArrowRight className="size-3.5" />
-      </Link>
-    </div>
+      <div className="flex w-full items-center pt-2">
+        <Link
+          href={`/vault/${profile.username}`}
+          className="inline-flex items-center gap-1.5 text-[13px] font-bold text-foreground transition-[transform,color] hover:translate-x-1 hover:text-accent-blue"
+        >
+          VIEW VAULT
+          <ArrowRight className="size-3" strokeWidth={2.5} />
+        </Link>
+      </div>
+    </article>
   );
 }

@@ -10,7 +10,7 @@ const STATUS_LABEL: Record<TournamentStatus, string> = {
 
 const STATUS_CLASS: Record<TournamentStatus, string> = {
   REGISTRATION_OPEN: "bg-emerald-100 text-emerald-700",
-  UPCOMING: "bg-blue-100 text-blue-700",
+  UPCOMING: "bg-accent-blue-tint text-accent-blue",
   COMPLETED: "bg-secondary text-secondary-foreground",
   DRAFT: "bg-amber-100 text-amber-700",
 };
