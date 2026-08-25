@@ -25,13 +25,42 @@ export default async function TeamsPage({
       {current.length > 0 && (
         <div className="flex w-full flex-col gap-2">
           <MSectionLabel>CURRENT TEAM</MSectionLabel>
-          {current.map((team) => (
-            <div
-              key={team.id}
-              className="flex w-full items-center justify-between gap-3 rounded-lg border border-foreground px-4 py-3"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex size-10 items-center justify-center rounded-md bg-foreground text-sm font-extrabold text-white">
+          <div className="grid w-full grid-cols-1 gap-3 lg:grid-cols-2">
+            {current.map((team) => (
+              <div
+                key={team.id}
+                className="flex w-full items-center justify-between gap-3 rounded-lg border border-foreground px-4 py-3"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex size-10 items-center justify-center rounded-md bg-foreground text-sm font-extrabold text-white">
+                    {team.logoLabel ?? team.name.charAt(0)}
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-sm font-extrabold text-foreground">{team.name}</span>
+                    <span className="text-[11px] text-[#767676]">
+                      {team.game} · {team.role} · {team.period}
+                    </span>
+                  </div>
+                </div>
+                <span className="rounded-sm bg-[#F5F5F5] px-1.5 py-0.5 text-[9px] font-bold text-foreground">
+                  ACTIVE
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {previous.length > 0 && (
+        <div className="flex w-full flex-col gap-2">
+          <MSectionLabel>PREVIOUS TEAMS</MSectionLabel>
+          <div className="grid w-full grid-cols-1 gap-3 lg:grid-cols-2">
+            {previous.map((team) => (
+              <div
+                key={team.id}
+                className="flex w-full items-center gap-3 rounded-lg border border-[#ECECEC] px-4 py-3"
+              >
+                <div className="flex size-10 items-center justify-center rounded-md bg-[#F5F5F5] text-sm font-extrabold text-foreground">
                   {team.logoLabel ?? team.name.charAt(0)}
                 </div>
                 <div className="flex flex-col gap-0.5">
@@ -41,33 +70,8 @@ export default async function TeamsPage({
                   </span>
                 </div>
               </div>
-              <span className="rounded-sm bg-[#F5F5F5] px-1.5 py-0.5 text-[9px] font-bold text-foreground">
-                ACTIVE
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {previous.length > 0 && (
-        <div className="flex w-full flex-col gap-2">
-          <MSectionLabel>PREVIOUS TEAMS</MSectionLabel>
-          {previous.map((team) => (
-            <div
-              key={team.id}
-              className="flex w-full items-center gap-3 rounded-lg border border-[#ECECEC] px-4 py-3"
-            >
-              <div className="flex size-10 items-center justify-center rounded-md bg-[#F5F5F5] text-sm font-extrabold text-foreground">
-                {team.logoLabel ?? team.name.charAt(0)}
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-sm font-extrabold text-foreground">{team.name}</span>
-                <span className="text-[11px] text-[#767676]">
-                  {team.game} · {team.role} · {team.period}
-                </span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
     </MobileAppShell>

@@ -104,69 +104,71 @@ export function GamerVaultOwnerView({
 
       <VaultTabsBar username={profile.username} active="Overview" />
 
-      {team && (
-        <div className="flex w-full flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold tracking-[0.5px] text-[#767676] uppercase">
-              CURRENT TEAM
-            </span>
-            <Link href={`/vault/${profile.username}/teams`} className="text-[11px] font-semibold text-accent-blue">
-              View all →
-            </Link>
-          </div>
-          <Link href={`/vault/${profile.username}/teams`}>
-            <MCardRow>
-              <div className="flex items-center gap-3">
-                <div className="flex size-9 items-center justify-center rounded-md bg-foreground text-sm font-extrabold text-white">
-                  {team.logoLabel ?? team.name.charAt(0)}
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span className="text-[13px] font-bold text-foreground">{team.name}</span>
-                  <span className="text-[11px] text-[#767676]">
-                    {team.game} · {team.role}
-                  </span>
-                </div>
-              </div>
-              <ChevronRight className="size-4 text-[#767676]" />
-            </MCardRow>
-          </Link>
-        </div>
-      )}
-
-      {achievement && (
-        <div className="flex w-full flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold tracking-[0.5px] text-[#767676] uppercase">
-              RECENT ACHIEVEMENT
-            </span>
-            <Link
-              href={`/vault/${profile.username}/achievements`}
-              className="text-[11px] font-semibold text-accent-blue"
-            >
-              View all →
-            </Link>
-          </div>
-          <Link href={`/vault/${profile.username}/achievements`}>
-            <MCardRow>
-              <div className="flex items-center gap-3">
-                <div className="flex size-9 items-center justify-center rounded-md bg-[#F5F5F5] text-foreground">
-                  <Trophy className="size-[18px]" strokeWidth={2} />
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span className="text-[13px] font-bold text-foreground">{achievement.title}</span>
-                  <div className="flex items-center gap-1.5">
+      <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
+        {team && (
+          <div className="flex w-full flex-col gap-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold tracking-[0.5px] text-[#767676] uppercase">
+                CURRENT TEAM
+              </span>
+              <Link href={`/vault/${profile.username}/teams`} className="text-[11px] font-semibold text-accent-blue">
+                View all →
+              </Link>
+            </div>
+            <Link href={`/vault/${profile.username}/teams`}>
+              <MCardRow>
+                <div className="flex items-center gap-3">
+                  <div className="flex size-9 items-center justify-center rounded-md bg-foreground text-sm font-extrabold text-white">
+                    {team.logoLabel ?? team.name.charAt(0)}
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-[13px] font-bold text-foreground">{team.name}</span>
                     <span className="text-[11px] text-[#767676]">
-                      {achievement.result} · {achievement.year}
+                      {team.game} · {team.role}
                     </span>
-                    <MVerifiedBadge label="VERIFIED" small />
                   </div>
                 </div>
-              </div>
-              <ChevronRight className="size-4 text-[#767676]" />
-            </MCardRow>
-          </Link>
-        </div>
-      )}
+                <ChevronRight className="size-4 text-[#767676]" />
+              </MCardRow>
+            </Link>
+          </div>
+        )}
+
+        {achievement && (
+          <div className="flex w-full flex-col gap-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold tracking-[0.5px] text-[#767676] uppercase">
+                RECENT ACHIEVEMENT
+              </span>
+              <Link
+                href={`/vault/${profile.username}/achievements`}
+                className="text-[11px] font-semibold text-accent-blue"
+              >
+                View all →
+              </Link>
+            </div>
+            <Link href={`/vault/${profile.username}/achievements`}>
+              <MCardRow>
+                <div className="flex items-center gap-3">
+                  <div className="flex size-9 items-center justify-center rounded-md bg-[#F5F5F5] text-foreground">
+                    <Trophy className="size-[18px]" strokeWidth={2} />
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-[13px] font-bold text-foreground">{achievement.title}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[11px] text-[#767676]">
+                        {achievement.result} · {achievement.year}
+                      </span>
+                      <MVerifiedBadge label="VERIFIED" small />
+                    </div>
+                  </div>
+                </div>
+                <ChevronRight className="size-4 text-[#767676]" />
+              </MCardRow>
+            </Link>
+          </div>
+        )}
+      </div>
     </MobileAppShell>
   );
 }

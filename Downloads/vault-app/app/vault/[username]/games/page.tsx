@@ -40,31 +40,33 @@ export default async function GamesPassportsPage({
         )
       }
     >
-      {passports.map((passport) => {
-        const visual = getGameVisual(passport.gameSlug);
-        return (
-          <Link key={passport.gameSlug} href={`/vault/${username}/games/${passport.gameSlug}`}>
-            <MCardRow>
-              <div className="flex items-center gap-3">
-                <div
-                  className="flex size-10 items-center justify-center rounded-md text-xs font-extrabold"
-                  style={{ background: visual.bg, color: visual.fg }}
-                >
-                  {visual.short}
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-sm font-extrabold text-foreground">{passport.gameName}</span>
-                    {passport.verified && <MVerifiedBadge small />}
+      <div className="grid w-full grid-cols-1 gap-3 lg:grid-cols-2">
+        {passports.map((passport) => {
+          const visual = getGameVisual(passport.gameSlug);
+          return (
+            <Link key={passport.gameSlug} href={`/vault/${username}/games/${passport.gameSlug}`}>
+              <MCardRow>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="flex size-10 items-center justify-center rounded-md text-xs font-extrabold"
+                    style={{ background: visual.bg, color: visual.fg }}
+                  >
+                    {visual.short}
                   </div>
-                  <span className="text-xs font-bold text-[#767676]">{passport.rank}</span>
+                  <div className="flex flex-col gap-0.5">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-sm font-extrabold text-foreground">{passport.gameName}</span>
+                      {passport.verified && <MVerifiedBadge small />}
+                    </div>
+                    <span className="text-xs font-bold text-[#767676]">{passport.rank}</span>
+                  </div>
                 </div>
-              </div>
-              <ChevronRight className="size-4 text-[#767676]" />
-            </MCardRow>
-          </Link>
-        );
-      })}
+                <ChevronRight className="size-4 text-[#767676]" />
+              </MCardRow>
+            </Link>
+          );
+        })}
+      </div>
 
       {isOwner && (
         <Link href={`/vault/${username}/games/add`}>

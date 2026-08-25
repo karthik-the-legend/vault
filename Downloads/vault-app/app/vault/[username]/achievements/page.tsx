@@ -28,31 +28,33 @@ export default async function AchievementsPage({
 
   return (
     <MobileAppShell onBack={true} title="ACHIEVEMENTS" headerRight={<span />}>
-      {items.map((achievement) => {
-        const style = CATEGORY_STYLE[achievement.category ?? "trophy"];
-        const Icon = style.icon;
-        return (
-          <MCardRow key={achievement.id} className="cursor-default hover:border-[#ECECEC] hover:bg-transparent">
-            <div className="flex items-center gap-3">
-              <div
-                className="flex size-9 items-center justify-center rounded-md"
-                style={{ background: style.bg, color: style.fg }}
-              >
-                <Icon className="size-[18px]" strokeWidth={2} />
+      <div className="grid w-full grid-cols-1 gap-3 lg:grid-cols-2">
+        {items.map((achievement) => {
+          const style = CATEGORY_STYLE[achievement.category ?? "trophy"];
+          const Icon = style.icon;
+          return (
+            <MCardRow key={achievement.id} className="cursor-default hover:border-[#ECECEC] hover:bg-transparent">
+              <div className="flex items-center gap-3">
+                <div
+                  className="flex size-9 items-center justify-center rounded-md"
+                  style={{ background: style.bg, color: style.fg }}
+                >
+                  <Icon className="size-[18px]" strokeWidth={2} />
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[13px] font-extrabold text-foreground uppercase">
+                    {achievement.title}
+                  </span>
+                  <span className="text-[11px] text-[#767676]">
+                    {achievement.result} · {achievement.game} · {achievement.year}
+                  </span>
+                </div>
               </div>
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[13px] font-extrabold text-foreground uppercase">
-                  {achievement.title}
-                </span>
-                <span className="text-[11px] text-[#767676]">
-                  {achievement.result} · {achievement.game} · {achievement.year}
-                </span>
-              </div>
-            </div>
-            <MVerifiedBadge label="VERIFIED" small />
-          </MCardRow>
-        );
-      })}
+              <MVerifiedBadge label="VERIFIED" small />
+            </MCardRow>
+          );
+        })}
+      </div>
     </MobileAppShell>
   );
 }

@@ -20,7 +20,7 @@ export default async function ContentPage({
 
   return (
     <MobileAppShell onBack={true} title="CONTENT" headerRight={<span />}>
-      <div className="grid w-full grid-cols-2 gap-3">
+      <div className="grid w-full grid-cols-2 gap-3 lg:grid-cols-3">
         {items.map((item) => (
           <button key={item.id} type="button" className="flex flex-col items-start gap-1.5 text-left">
             <div
