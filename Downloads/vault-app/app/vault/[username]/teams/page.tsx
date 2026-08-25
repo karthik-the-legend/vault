@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation";
-import { teams, getProfileByUsername } from "@/lib/mock-data";
+import { teams, getAllUsernames, getProfileByUsername } from "@/lib/mock-data";
 import { MobileAppShell } from "@/components/layout/mobile-app-shell";
 import { MSectionLabel } from "@/components/shared/mobile-ui";
+
+export async function generateStaticParams() {
+  return getAllUsernames();
+}
 
 export default async function TeamsPage({
   params,

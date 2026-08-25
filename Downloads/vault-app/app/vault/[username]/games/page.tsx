@@ -1,10 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Plus, ChevronRight } from "lucide-react";
-import { currentUsername, gamePassports, getProfileByUsername } from "@/lib/mock-data";
+import { currentUsername, gamePassports, getAllUsernames, getProfileByUsername } from "@/lib/mock-data";
 import { getGameVisual } from "@/lib/game-visuals";
 import { MobileAppShell } from "@/components/layout/mobile-app-shell";
 import { MVerifiedBadge, MCardRow, MBtnOutlineDark } from "@/components/shared/mobile-ui";
+
+export async function generateStaticParams() {
+  return getAllUsernames();
+}
 
 export default async function GamesPassportsPage({
   params,

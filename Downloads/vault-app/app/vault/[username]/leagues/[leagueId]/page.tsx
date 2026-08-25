@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import { getProfileByUsername, leagues, tournaments } from "@/lib/mock-data";
+import { getLeagueParams, getProfileByUsername, leagues, tournaments } from "@/lib/mock-data";
 import { Breadcrumb } from "@/components/shared/breadcrumb";
 import { AuthenticatedShell } from "@/components/layout/authenticated-shell";
 
@@ -10,6 +10,10 @@ const STATUS_LABEL: Record<string, string> = {
   COMPLETED: "COMPLETED",
   DRAFT: "DRAFT",
 };
+
+export async function generateStaticParams() {
+  return getLeagueParams();
+}
 
 export default async function LeagueDetailPage({
   params,

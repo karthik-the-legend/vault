@@ -1,6 +1,10 @@
 import { notFound, redirect } from "next/navigation";
-import { getProfileByUsername, ownedUsernames, recruitmentOpportunities } from "@/lib/mock-data";
+import { getOwnedDashboardUsernames, getProfileByUsername, ownedUsernames, recruitmentOpportunities } from "@/lib/mock-data";
 import { DashboardSidebar } from "@/components/layout/dashboard-sidebar";
+
+export async function generateStaticParams() {
+  return getOwnedDashboardUsernames();
+}
 
 export default async function DashboardLayout({
   children,

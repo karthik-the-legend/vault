@@ -1,8 +1,12 @@
 import { notFound } from "next/navigation";
 import { ShieldCheck } from "lucide-react";
-import { gamePassports, getProfileByUsername } from "@/lib/mock-data";
+import { gamePassports, getGameSlugParams, getProfileByUsername } from "@/lib/mock-data";
 import { MobileAppShell } from "@/components/layout/mobile-app-shell";
 import { MVerifiedBadge, MCardBordered, MAvatarCircle } from "@/components/shared/mobile-ui";
+
+export async function generateStaticParams() {
+  return getGameSlugParams();
+}
 
 export default async function GamePassportDetailPage({
   params,

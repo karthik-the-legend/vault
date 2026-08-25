@@ -6,6 +6,7 @@ import {
   clubTeams,
   clubPlayers,
   gamePassports,
+  getAllUsernames,
   getProfileByUsername,
   leagues,
   organizerContent,
@@ -20,6 +21,10 @@ import { GamerVaultVisitorView } from "@/components/features/vault/gamer-vault-v
 import { ClubProfileView } from "@/components/features/club/club-profile-view";
 import { OrganizerProfileView } from "@/components/features/organizer/organizer-profile-view";
 import { AuthenticatedShell } from "@/components/layout/authenticated-shell";
+
+export async function generateStaticParams() {
+  return getAllUsernames();
+}
 
 export default async function VaultProfilePage({
   params,

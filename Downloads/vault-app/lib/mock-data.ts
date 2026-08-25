@@ -1711,3 +1711,41 @@ export const myTournamentHistory = [
     prizeWon: "₹45,000",
   },
 ];
+
+// ---------- Static export params (used by generateStaticParams) ----------
+
+export function getAllUsernames(): { username: string }[] {
+  return profiles.map((p) => ({ username: p.username }));
+}
+
+export function getOwnedDashboardUsernames(): { username: string }[] {
+  return ownedUsernames
+    .filter((username) => getProfileByUsername(username)?.type !== "GAMER")
+    .map((username) => ({ username }));
+}
+
+export function getGameSlugParams(): { username: string; gameSlug: string }[] {
+  return Object.entries(gamePassports).flatMap(([username, passports]) =>
+    passports.map((g) => ({ username, gameSlug: g.gameSlug }))
+  );
+}
+
+export function getTeamParams(): { username: string; teamId: string }[] {
+  return Object.entries(clubTeams).flatMap(([username, teamList]) =>
+    teamList.map((t) => ({ username, teamId: t.id }))
+  );
+}
+
+export function getLeagueParams(): { username: string; leagueId: string }[] {
+  return Object.entries(leagues).flatMap(([username, leagueList]) =>
+    leagueList.map((l) => ({ username, leagueId: l.slug }))
+  );
+}
+
+export function getTournamentSlugParams(): { slug: string }[] {
+  return hubTournaments.map((t) => ({ slug: t.slug }));
+}
+
+export function getContentIdParams(): { id: string }[] {
+  return creatorPosts.map((p) => ({ id: p.id }));
+}

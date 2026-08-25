@@ -1,8 +1,12 @@
 import { notFound } from "next/navigation";
 import { Trophy, Star, Medal, Layers } from "lucide-react";
-import { achievements, getProfileByUsername } from "@/lib/mock-data";
+import { achievements, getAllUsernames, getProfileByUsername } from "@/lib/mock-data";
 import { MobileAppShell } from "@/components/layout/mobile-app-shell";
 import { MCardRow, MVerifiedBadge } from "@/components/shared/mobile-ui";
+
+export async function generateStaticParams() {
+  return getAllUsernames();
+}
 
 const CATEGORY_STYLE: Record<string, { bg: string; fg: string; icon: typeof Trophy }> = {
   trophy: { bg: "#FEF3C7", fg: "#D97706", icon: Trophy },

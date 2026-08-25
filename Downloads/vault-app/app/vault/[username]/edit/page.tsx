@@ -2,9 +2,14 @@ import { notFound, redirect } from "next/navigation";
 import {
   currentUsername,
   gamePassports,
+  getAllUsernames,
   getProfileByUsername,
 } from "@/lib/mock-data";
 import { EditVaultForm } from "@/components/features/vault/edit-vault-form";
+
+export async function generateStaticParams() {
+  return getAllUsernames();
+}
 
 export default async function EditVaultPage({
   params,

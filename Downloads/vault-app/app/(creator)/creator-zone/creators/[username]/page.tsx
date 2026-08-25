@@ -1,7 +1,11 @@
 import { UserSquare2 } from "lucide-react";
-import { creatorPosts, gamePassports, getProfileByUsername } from "@/lib/mock-data";
+import { creatorPosts, gamePassports, getAllUsernames, getProfileByUsername } from "@/lib/mock-data";
 import { CreatorProfileView } from "@/components/features/creator/creator-profile-view";
 import { EmptyState } from "@/components/shared/empty-state";
+
+export async function generateStaticParams() {
+  return getAllUsernames();
+}
 
 export default async function CreatorProfilePage({
   params,

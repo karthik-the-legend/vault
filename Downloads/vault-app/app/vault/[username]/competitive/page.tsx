@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation";
-import { matchHistory, getProfileByUsername } from "@/lib/mock-data";
+import { matchHistory, getAllUsernames, getProfileByUsername } from "@/lib/mock-data";
 import { MobileAppShell } from "@/components/layout/mobile-app-shell";
 import { MCardRow, MVerifiedBadge } from "@/components/shared/mobile-ui";
+
+export async function generateStaticParams() {
+  return getAllUsernames();
+}
 
 export default async function CompetitivePage({
   params,

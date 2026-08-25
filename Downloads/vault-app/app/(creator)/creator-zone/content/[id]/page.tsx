@@ -1,8 +1,12 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Heart, MessageCircle, MoreHorizontal, Play, Send, Share2 } from "lucide-react";
-import { creatorPosts, getCreatorPostById, getProfileByUsername } from "@/lib/mock-data";
+import { creatorPosts, getContentIdParams, getCreatorPostById, getProfileByUsername } from "@/lib/mock-data";
 import { VerifiedDot } from "@/components/shared/verified-badge";
+
+export async function generateStaticParams() {
+  return getContentIdParams();
+}
 
 export default async function ContentDetailPage({
   params,

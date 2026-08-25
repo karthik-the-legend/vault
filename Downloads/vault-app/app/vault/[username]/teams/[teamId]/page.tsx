@@ -1,9 +1,13 @@
 import { notFound } from "next/navigation";
 import { ExternalLink } from "lucide-react";
-import { clubTeams, getProfileByUsername } from "@/lib/mock-data";
+import { clubTeams, getProfileByUsername, getTeamParams } from "@/lib/mock-data";
 import { Breadcrumb } from "@/components/shared/breadcrumb";
 import { VerifiedDot } from "@/components/shared/verified-badge";
 import { AuthenticatedShell } from "@/components/layout/authenticated-shell";
+
+export async function generateStaticParams() {
+  return getTeamParams();
+}
 
 export default async function TeamDetailPage({
   params,

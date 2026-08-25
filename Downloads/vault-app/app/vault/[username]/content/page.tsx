@@ -1,7 +1,11 @@
 import { notFound } from "next/navigation";
 import { Play } from "lucide-react";
-import { contentItems, getProfileByUsername } from "@/lib/mock-data";
+import { contentItems, getAllUsernames, getProfileByUsername } from "@/lib/mock-data";
 import { MobileAppShell } from "@/components/layout/mobile-app-shell";
+
+export async function generateStaticParams() {
+  return getAllUsernames();
+}
 
 export default async function ContentPage({
   params,
