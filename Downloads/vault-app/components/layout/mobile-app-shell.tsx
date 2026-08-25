@@ -30,7 +30,7 @@ export function MobileAppShell({
   const profile = getProfileByUsername(currentUsername);
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-[480px] flex-col border-x border-border bg-background font-figtree">
+    <div className="mx-auto flex min-h-screen w-full max-w-[480px] flex-col border-x border-border bg-background font-figtree sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
       {bare ? null : (
         <header className="flex min-h-12 w-full items-center justify-between px-6 py-3">
           <div className="flex items-center gap-3">

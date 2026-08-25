@@ -16,9 +16,9 @@ const SUPPORT_LINKS = [
 ];
 
 const CONNECT_LINKS = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "YouTube", href: "https://youtube.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "Instagram", href: "https://www.instagram.com/zarxesportsforum?igsi=dXRoYmh3cmVsMTBu" },
+  { label: "YouTube", href: "https://youtube.com/@zef.global?si=CPnRTgftMMvDimZi" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/zefglobal.com/" },
 ];
 
 export function MarketingFooter() {
