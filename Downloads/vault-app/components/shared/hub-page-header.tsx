@@ -1,19 +1,41 @@
 import { Bell, Wallet } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function HubPageHeader({
   title,
   subtitle,
+  size = "md",
 }: {
   title: string;
   subtitle: string;
+  size?: "md" | "lg";
 }) {
   return (
-    <div className="mb-8 flex flex-wrap items-start justify-between gap-4 border-b border-border pb-6">
+    <div
+      className={cn(
+        "mb-8 flex flex-wrap items-start justify-between gap-4 border-b border-border",
+        size === "lg" ? "pb-8" : "pb-6"
+      )}
+    >
       <div>
-        <h1 className="font-heading text-2xl font-black tracking-tight sm:text-3xl">
+        <h1
+          className={cn(
+            "font-heading font-black tracking-tight",
+            size === "lg"
+              ? "text-4xl sm:text-5xl"
+              : "text-2xl sm:text-3xl"
+          )}
+        >
           {title}
         </h1>
-        <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
+        <p
+          className={cn(
+            "mt-1 text-muted-foreground",
+            size === "lg" ? "text-base" : "text-sm"
+          )}
+        >
+          {subtitle}
+        </p>
       </div>
       <div className="flex shrink-0 items-center gap-3">
         <button

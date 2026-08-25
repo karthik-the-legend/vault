@@ -4,27 +4,37 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Bell, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { currentUsername } from "@/lib/mock-data";
+import { getProfileByUsername } from "@/lib/mock-data";
+import { useSession } from "@/lib/session-context";
+import { ProfileMenu } from "@/components/shared/profile-menu";
 
-const NAV_ITEMS = [
+const BASE_NAV_ITEMS = [
   { label: "Discover", href: "/discover" },
-  { label: "Gamers", href: "/discover/search?category=GAMER" },
-  { label: "Esports Clubs", href: "/discover/search?category=ESPORTS_CLUB" },
-  { label: "League Organizers", href: "/discover/search?category=ORGANIZER" },
   { label: "Tournaments Hub", href: "/tournaments" },
   { label: "Creator Zone", href: "/creator-zone" },
-  { label: "VAULT+", href: "/vault-identity" },
 ];
 
 export function AppHeader() {
   const pathname = usePathname();
   const router = useRouter();
+  const { session, logout } = useSession();
+
+  const navItems = session
+    ? [...BASE_NAV_ITEMS, { label: "VAULT+", href: "/vault-identity" }]
+    : BASE_NAV_ITEMS;
+
+  const profile = session ? getProfileByUsername(session.username) : undefined;
+
+  function handleSignOut() {
+    logout();
+    router.push("/");
+  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-8">
-          <Link href="/home" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <span className="flex size-7 items-center justify-center rounded-md bg-foreground text-sm font-black text-background">
               V
             </span>
@@ -33,7 +43,7 @@ export function AppHeader() {
             </span>
           </Link>
           <nav className="hidden items-center gap-6 lg:flex">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const active =
                 item.label === "Discover" && pathname === "/discover";
               return (
@@ -69,20 +79,33 @@ export function AppHeader() {
           >
             <Bell className="size-5" />
           </button>
-          <Link
-            href={`/vault/${currentUsername}`}
-            className="flex size-8 items-center justify-center rounded-full font-bold text-white"
-            style={{
-              background: "linear-gradient(135deg, #1e3a8a, #7c3aed)",
-            }}
-            aria-label="Your profile"
-          >
-            A
-          </Link>
+          {session && profile ? (
+            <ProfileMenu
+              username={profile.username}
+              avatarGradient={profile.avatarGradient}
+              initial={profile.displayName.charAt(0).toUpperCase()}
+              onSignOut={handleSignOut}
+            />
+          ) : (
+            <div className="flex items-center gap-3">
+              <Link
+                href="/"
+                className="text-sm font-semibold text-foreground transition-opacity hover:opacity-75"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center rounded-md bg-foreground px-4 py-2 text-xs font-bold whitespace-nowrap text-background transition-colors hover:bg-[#222222]"
+              >
+                Setup your VAULT
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <nav className="flex items-center gap-5 overflow-x-auto border-t border-border px-4 py-2 lg:hidden">
-        {NAV_ITEMS.map((item) => (
+        {navItems.map((item) => (
           <Link
             key={item.label}
             href={item.href}

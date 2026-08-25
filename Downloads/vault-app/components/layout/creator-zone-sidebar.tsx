@@ -18,7 +18,7 @@ export function CreatorZoneSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden w-60 shrink-0 flex-col border-r border-border px-3 py-5 lg:flex">
+    <aside className="sticky top-16 hidden h-[calc(100vh-4rem)] w-60 shrink-0 flex-col overflow-y-auto border-r border-border px-3 py-5 lg:flex">
       <nav className="space-y-1">
         {NAV_ITEMS.map((item) => {
           const active = item.href === "/creator-zone" ? pathname === "/creator-zone" : pathname.startsWith(item.href);

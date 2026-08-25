@@ -22,12 +22,16 @@ type Category =
 
 const TABS: { value: Category; label: string }[] = [
   { value: "ALL", label: "All" },
-  { value: "GAMER", label: "Gamers" },
+  { value: "GAMER", label: "Players" },
   { value: "ESPORTS_CLUB", label: "Clubs" },
   { value: "ORGANIZER", label: "Organizers" },
   { value: "TOURNAMENTS", label: "Tournaments" },
   { value: "COMMUNITIES", label: "Communities" },
 ];
+
+const HERO_TITLE_OVERRIDE: Partial<Record<Category, string>> = {
+  GAMER: "Players",
+};
 
 const FILTER_CONFIG: Record<Category, { fields: FilterField[]; toggleLabel?: string }> = {
   ALL: { fields: [] },
@@ -132,7 +136,7 @@ export function SearchResultsView() {
             {heroInfo.eyebrow}
           </span>
           <h1 className="font-heading text-4xl leading-[1.1] font-black tracking-[-0.03em] text-foreground sm:text-5xl">
-            {heroInfo.title.toUpperCase()}.
+            {(HERO_TITLE_OVERRIDE[category] ?? heroInfo.title).toUpperCase()}.
           </h1>
           <p className="max-w-lg text-base text-muted-foreground">
             {heroInfo.landingDescription}

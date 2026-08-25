@@ -28,6 +28,7 @@ export default function TournamentsHubPage() {
       <HubPageHeader
         title="TOURNAMENT DISCOVERY"
         subtitle="Compete in verified esports events across top titles"
+        size="lg"
       />
 
       <TournamentSearchBar />

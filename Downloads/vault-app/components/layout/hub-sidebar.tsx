@@ -20,7 +20,7 @@ export function HubSidebar() {
   const profile = getProfileByUsername(currentUsername);
 
   return (
-    <aside className="hidden w-60 shrink-0 flex-col border-r border-border lg:flex">
+    <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col overflow-y-auto border-r border-border lg:flex">
       <div className="flex items-center gap-2 px-5 py-5">
         <span className="flex size-7 items-center justify-center rounded-md bg-foreground text-sm font-black text-background">
           V

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Figtree, Geist, Outfit, Instrument_Sans } from "next/font/google";
+import { SessionProvider } from "@/lib/session-context";
 import "./globals.css";
 
 const inter = Inter({
@@ -44,7 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${figtree.variable} ${geist.variable} ${outfit.variable} ${instrumentSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        {children}
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   );
