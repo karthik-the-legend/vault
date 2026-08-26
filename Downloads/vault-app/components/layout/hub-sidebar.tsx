@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Trophy, Shield, Flag, BadgeCheck, Menu, SlidersHorizontal, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { currentUsername, getProfileByUsername } from "@/lib/mock-data";
+import { basePath } from "@/lib/base-path";
 
 const NAV_ITEMS = [
   { label: "Tournaments", href: "/tournaments", icon: Trophy, dot: true },
@@ -23,7 +24,7 @@ export function HubSidebar() {
   return (
     <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col overflow-y-auto border-r border-border lg:flex">
       <div className="flex items-center gap-2 px-5 py-5">
-        <Image src="/logo.jpeg" alt="VAULT" width={28} height={28} className="rounded-md" />
+        <Image src={`${basePath}/logo.jpeg`} alt="VAULT" width={28} height={28} className="rounded-md" />
       </div>
 
       <nav className="flex-1 space-y-1 px-3">

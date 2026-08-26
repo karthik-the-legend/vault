@@ -15,6 +15,7 @@ import {
   BarChart3,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { basePath } from "@/lib/base-path";
 import { Profile } from "@/types";
 
 export function DashboardSidebar({
@@ -53,7 +54,7 @@ export function DashboardSidebar({
   return (
     <aside className="flex w-60 shrink-0 flex-col border-r border-border bg-card">
       <div className="flex items-center gap-2 px-5 py-5">
-        <Image src="/logo.jpeg" alt="VAULT" width={28} height={28} className="rounded-md" />
+        <Image src={`${basePath}/logo.jpeg`} alt="VAULT" width={28} height={28} className="rounded-md" />
         <div className="text-[10px] font-medium tracking-wide text-muted-foreground">
           {portalLabel}
         </div>

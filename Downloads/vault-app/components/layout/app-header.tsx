@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { getProfileByUsername } from "@/lib/mock-data";
 import { useSession } from "@/lib/session-context";
 import { ProfileMenu } from "@/components/shared/profile-menu";
+import { basePath } from "@/lib/base-path";
 
 const BASE_NAV_ITEMS = [
   { label: "Discover", href: "/discover" },
@@ -36,7 +37,7 @@ export function AppHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.jpeg" alt="VAULT" width={28} height={28} className="rounded-md" />
+            <Image src={`${basePath}/logo.jpeg`} alt="VAULT" width={28} height={28} className="rounded-md" />
           </Link>
           <nav className="hidden items-center gap-6 lg:flex">
             {navItems.map((item) => {

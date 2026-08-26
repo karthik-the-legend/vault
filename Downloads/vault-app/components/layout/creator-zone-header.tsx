@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Plus, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { currentUsername } from "@/lib/mock-data";
+import { basePath } from "@/lib/base-path";
 
 const TABS = [
   { label: "For You", href: "/creator-zone" },
@@ -20,7 +21,7 @@ export function CreatorZoneHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         <Link href="/creator-zone" className="flex items-center gap-2">
-          <Image src="/logo.jpeg" alt="VAULT" width={28} height={28} className="rounded-md" />
+          <Image src={`${basePath}/logo.jpeg`} alt="VAULT" width={28} height={28} className="rounded-md" />
           <span className="hidden text-[11px] font-semibold tracking-wide text-muted-foreground sm:inline">
             CREATOR ZONE
           </span>

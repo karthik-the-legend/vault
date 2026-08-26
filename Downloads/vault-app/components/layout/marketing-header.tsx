@@ -9,6 +9,7 @@ import { useLandingModals } from "@/lib/landing-modals-context";
 import { useSession } from "@/lib/session-context";
 import { getProfileByUsername } from "@/lib/mock-data";
 import { ProfileMenu } from "@/components/shared/profile-menu";
+import { basePath } from "@/lib/base-path";
 import { cn } from "@/lib/utils";
 
 const BASE_NAV_LINKS = [
@@ -46,7 +47,7 @@ export function MarketingHeader() {
           <Menu className="size-[18px]" strokeWidth={2.2} />
         </button>
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.jpeg" alt="VAULT" width={32} height={32} className="rounded-md" />
+          <Image src={`${basePath}/logo.jpeg`} alt="VAULT" width={32} height={32} className="rounded-md" />
         </Link>
       </div>
 
