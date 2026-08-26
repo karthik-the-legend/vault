@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   LayoutGrid,
@@ -52,14 +53,9 @@ export function DashboardSidebar({
   return (
     <aside className="flex w-60 shrink-0 flex-col border-r border-border bg-card">
       <div className="flex items-center gap-2 px-5 py-5">
-        <span className="flex size-7 items-center justify-center rounded-md bg-foreground text-sm font-black text-background">
-          V
-        </span>
-        <div>
-          <div className="text-sm font-black tracking-tight">VAULT</div>
-          <div className="text-[10px] font-medium tracking-wide text-muted-foreground">
-            {portalLabel}
-          </div>
+        <Image src="/logo.jpeg" alt="VAULT" width={28} height={28} className="rounded-md" />
+        <div className="text-[10px] font-medium tracking-wide text-muted-foreground">
+          {portalLabel}
         </div>
       </div>
 

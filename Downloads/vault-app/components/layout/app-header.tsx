@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Bell, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -35,12 +36,7 @@ export function AppHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <span className="flex size-7 items-center justify-center rounded-md bg-foreground text-sm font-black text-background">
-              V
-            </span>
-            <span className="text-base font-black tracking-tight">
-              VAULT
-            </span>
+            <Image src="/logo.jpeg" alt="VAULT" width={28} height={28} className="rounded-md" />
           </Link>
           <nav className="hidden items-center gap-6 lg:flex">
             {navItems.map((item) => {

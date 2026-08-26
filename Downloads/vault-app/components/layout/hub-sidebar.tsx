@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Trophy, Shield, Flag, BadgeCheck, Menu, SlidersHorizontal, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -22,10 +23,7 @@ export function HubSidebar() {
   return (
     <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col overflow-y-auto border-r border-border lg:flex">
       <div className="flex items-center gap-2 px-5 py-5">
-        <span className="flex size-7 items-center justify-center rounded-md bg-foreground text-sm font-black text-background">
-          V
-        </span>
-        <span className="text-base font-black tracking-tight">VAULT</span>
+        <Image src="/logo.jpeg" alt="VAULT" width={28} height={28} className="rounded-md" />
       </div>
 
       <nav className="flex-1 space-y-1 px-3">
